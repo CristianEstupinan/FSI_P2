@@ -71,9 +71,9 @@ while (contadorEstabilizacion < 15) or (epoch <= 30):
         batch_ys = y_data[jj * batch_size: jj * batch_size + minimo]
         sess.run(train, feed_dict={x: batch_xs, y_: batch_ys})
 
-    batch_xv = x_data[jj * batch_size + minimo: jj * batch_size + minimo + tamanoValidacion]
-    batch_yv = y_data[jj * batch_size + minimo: jj * batch_size + minimo + tamanoValidacion]
-    error = sess.run(loss, feed_dict={x: batch_xv, y_: batch_yv})
+    validacion_x = x_data[jj * batch_size + minimo: jj * batch_size + minimo + tamanoValidacion]
+    validacion_y = y_data[jj * batch_size + minimo: jj * batch_size + minimo + tamanoValidacion]
+    error = sess.run(loss, feed_dict={x: validacion_x, y_: validacion_y})
     vectorErrores.append(error)
 
     #Comprobacion de la estabilizacion
@@ -90,8 +90,8 @@ while (contadorEstabilizacion < 15) or (epoch <= 30):
 
 
     print "Epoch #:", epoch, "Error: ", error
-    result = sess.run(y, feed_dict={x: batch_xv})
-    for b, r in zip(batch_yv, result):
+    result = sess.run(y, feed_dict={x: validacion_x})
+    for b, r in zip(validacion_y, result):
         print b, "-->", r
     print "----------------------------------------------------------------------------------"
     epoch += 1

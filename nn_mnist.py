@@ -88,9 +88,9 @@ while (contadorEstabilidad < 10) or (epoch <= 20):
         batch_ys = y_data_train[jj * batch_size: jj * batch_size + minimo]
         sess.run(train, feed_dict={x: batch_xs, y_: batch_ys})
 
-    batch_xv = valid_x
-    batch_yv = y_data_valid
-    error = sess.run(loss, feed_dict={x: batch_xv, y_: batch_yv})
+    validacion_x = valid_x
+    validacion_y = y_data_valid
+    error = sess.run(loss, feed_dict={x: validacion_x, y_: validacion_y})
     vectorErrores.append(error)
 
     if (epoch == 0):

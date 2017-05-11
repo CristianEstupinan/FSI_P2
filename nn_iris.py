@@ -107,7 +107,8 @@ for b, r in zip(batch_yt, result):
 
 
 print "El numero de fallos obtenido es de: %d" % contadorFallos
-print "El porcentaje es de: %f" % float(contadorFallos/tamanoTest)
+resultado = contadorFallos/float(tamanoTest)
+print "El porcentaje es de: %f" % resultado
 
 plt.figure()
 vectorErrores = np.array(vectorErrores)
